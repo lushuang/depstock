@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="depstock:war">
-    <output-path>$PROJECT_DIR$/target</output-path>
-    <root id="archive" name="depstock.war">
-      <element id="artifact" artifact-name="depstock:war exploded" />
-    </root>
-  </artifact>
-</component>
