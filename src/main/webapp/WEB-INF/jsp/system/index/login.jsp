@@ -124,7 +124,7 @@
                     <div style="width:86%;padding-left:8%;">
 
                         <div style="float: left;padding-top:2px;">
-                            <i><img src="static/login/yan.png"/></i>
+                            <i><b>验证码&emsp;</b></i>
                         </div>
                         <div style="float: left;" class="codediv">
                             <input type="text" name="code" id="code" class="login_code"
@@ -239,11 +239,12 @@
                 </c:forEach>
             </c:when>
             <c:otherwise>
-                <div data-src="static/login/images/banner_slide_01.jpg"></div>
-                <div data-src="static/login/images/banner_slide_02.jpg"></div>
-                <div data-src="static/login/images/banner_slide_03.jpg"></div>
-                <div data-src="static/login/images/banner_slide_04.jpg"></div>
-                <div data-src="static/login/images/banner_slide_05.jpg"></div>
+                <div data-src="static/login/images/logo/banner_slide_logo_1.jpg"></div>
+                <div data-src="static/login/images/logo/banner_slide_logo_2.jpg"></div>
+                <div data-src="static/login/images/logo/banner_slide_logo_3.jpg"></div>
+                <div data-src="static/login/images/logo/banner_slide_logo_4.jpg"></div>
+                <div data-src="static/login/images/logo/banner_slide_logo_5.jpg"></div>
+                <div data-src="static/login/images/logo/banner_slide_logo_6.jpg"></div>
             </c:otherwise>
         </c:choose>
     </div>
