@@ -10,12 +10,12 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.Serializable;
 
-public class BaseController {
-
-    protected Logger logger = Logger.getLogger(this.getClass());
+public class BaseController implements Serializable {
 
     private static final long serialVersionUID = 6357869213649815390L;
+    protected Logger logger = Logger.getLogger(this.getClass());
 
     /**
      * new PageData对象
@@ -73,5 +73,4 @@ public class BaseController {
         logger.info("end");
         logger.info("");
     }
-
 }

@@ -14,7 +14,6 @@ import javax.annotation.Resource;
 import java.util.HashMap;
 import java.util.Map;
 
-
 /**
  * 系统用户-接口类
  * 相关参数协议：
