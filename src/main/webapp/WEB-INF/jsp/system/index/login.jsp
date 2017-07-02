@@ -41,12 +41,14 @@
     <script>
         //window.setTimeout(showfh,3000);
         var timer;
+
         function showfh() {
             fhi = 1;
             //关闭提示晃动屏幕，注释掉这句话即可
             timer = setInterval(xzfh2, 10);
         };
         var current = 0;
+
         function xzfh() {
             current = (current) % 360;
             document.body.style.transform = 'rotate(' + current + 'deg)';
@@ -57,6 +59,7 @@
         };
         var fhi = 1;
         var current2 = 1;
+
         function xzfh2() {
             if (fhi > 50) {
                 document.body.style.transform = 'rotate(0deg)';
@@ -321,6 +324,7 @@
     function changeCode1() {
         $("#codeImg").attr("src", "code.do?t=" + genTimestamp());
     }
+
     function changeCode2() {
         $("#zcodeImg").attr("src", "code.do?t=" + genTimestamp());
     }
@@ -548,6 +552,7 @@
     function ismail(mail) {
         return (new RegExp(/^(?:[a-zA-Z0-9]+[_\-\+\.]?)*[a-zA-Z0-9]+@(?:([a-zA-Z0-9]+[_\-]?)*[a-zA-Z0-9]+\.)+([a-zA-Z]{2,})+$/).test(mail));
     }
+
     //js  日期格式
     function date2str(x, y) {
         var z = {y: x.getFullYear(), M: x.getMonth() + 1, d: x.getDate(), h: x.getHours(), m: x.getMinutes(), s: x.getSeconds()};
@@ -565,6 +570,7 @@
 <c:if test="${'1' == pd.msg}">
     <script type="text/javascript">
         $(tsMsg());
+
         function tsMsg() {
             alert('此用户在其它终端已经早于您登录,您暂时无法登录');
         }
@@ -573,6 +579,7 @@
 <c:if test="${'2' == pd.msg}">
     <script type="text/javascript">
         $(tsMsg());
+
         function tsMsg() {
             alert('您被系统管理员强制下线');
         }
