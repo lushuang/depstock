@@ -31,16 +31,9 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.text.DecimalFormat;
 import java.util.*;
-/**
- * 总入口
- *
- * @author fh QQ 3 1 3 5 9 6 7 9 0[青苔]
- * 修改日期：2015/11/2
- */
 
 /**
- * @author Administrator
- *
+ * 登入Controller
  */
 @Controller
 public class LoginController extends BaseController {
@@ -66,7 +59,9 @@ public class LoginController extends BaseController {
     @Resource(name = "outkuService")
     private OutKuManager outkuService;
 
-    /**访问登录页
+    /**
+     * 访问登录页
+     *
      * @return
      * @throws Exception
      */
@@ -83,7 +78,10 @@ public class LoginController extends BaseController {
 
 
     // TODO: 2017/05/01 稍后查看
-    /**请求登录，验证用户
+
+    /**
+     * 请求登录，验证用户
+     *
      * @return
      * @throws Exception
      */
@@ -154,7 +152,9 @@ public class LoginController extends BaseController {
         return AppUtil.returnObject(new PageData(), map);
     }
 
-    /**访问系统首页
+    /**
+     * 访问系统首页
+     *
      * @param changeMenu：切换菜单参数
      * @return
      */
@@ -202,7 +202,9 @@ public class LoginController extends BaseController {
         return mv;
     }
 
-    /**菜单缓存
+    /**
+     * 菜单缓存
+     *
      * @param session
      * @param USERNAME
      * @param roleRights
@@ -224,7 +226,9 @@ public class LoginController extends BaseController {
         return allmenuList;
     }
 
-    /**根据角色权限获取本权限的菜单列表(递归处理)
+    /**
+     * 根据角色权限获取本权限的菜单列表(递归处理)
+     *
      * @param menuList：传入的总菜单
      * @param roleRights：加密的权限字符串
      * @return
@@ -239,7 +243,9 @@ public class LoginController extends BaseController {
         return menuList;
     }
 
-    /**切换菜单处理
+    /**
+     * 切换菜单处理
+     *
      * @param allmenuList
      * @param session
      * @param USERNAME
@@ -280,6 +286,7 @@ public class LoginController extends BaseController {
 
     /**
      * 进入tab标签
+     *
      * @return
      */
     @RequestMapping(value = "/tab")
@@ -289,6 +296,7 @@ public class LoginController extends BaseController {
 
     /**
      * 进入首页后的默认页面
+     *
      * @return
      * @throws Exception
      */
@@ -374,6 +382,7 @@ public class LoginController extends BaseController {
 
     /**
      * 用户注销
+     *
      * @param session
      * @return
      * @throws Exception
@@ -415,7 +424,9 @@ public class LoginController extends BaseController {
         session.removeAttribute("DEPARTMENT_ID");
     }
 
-    /**设置登录页面的配置参数
+    /**
+     * 设置登录页面的配置参数
+     *
      * @param pd
      * @return
      */
@@ -438,7 +449,9 @@ public class LoginController extends BaseController {
         return pd;
     }
 
-    /**获取用户权限
+    /**
+     * 获取用户权限
+     *
      * @param session
      * @return
      */
@@ -468,7 +481,9 @@ public class LoginController extends BaseController {
         return map;
     }
 
-    /** 更新登录用户的IP
+    /**
+     * 更新登录用户的IP
+     *
      * @param USERNAME
      * @throws Exception
      */

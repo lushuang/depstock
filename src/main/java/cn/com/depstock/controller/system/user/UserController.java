@@ -70,8 +70,8 @@ public class UserController extends BaseController {
         }
         page.setPd(pd);
         List<PageData> userList = userService.listUsers(page);    //列出用户列表
-        pd.put("ROLE_ID", "1");
-        List<Role> roleList = roleService.listAllRolesByPId(pd);//列出所有系统用户角色
+        // pd.put("ROLE_ID", "1");
+        List<Role> roleList = roleService.listAllRoles(pd);//列出所有系统用户角色
         mv.setViewName("system/user/user_list");
         mv.addObject("userList", userList);
         mv.addObject("roleList", roleList);
@@ -114,8 +114,8 @@ public class UserController extends BaseController {
         ModelAndView mv = this.getModelAndView();
         PageData pd = new PageData();
         pd = this.getPageData();
-        pd.put("ROLE_ID", "1");
-        List<Role> roleList = roleService.listAllRolesByPId(pd);//列出所有系统用户角色
+        // pd.put("ROLE_ID", "1");
+        List<Role> roleList = roleService.listAllRoles(pd);//列出所有系统用户角色
         mv.setViewName("system/user/user_edit");
         mv.addObject("msg", "saveU");
         mv.addObject("pd", pd);
@@ -539,7 +539,7 @@ public class UserController extends BaseController {
                 }
                 userService.saveU(pd);
             }
-			/*存入数据库操作======================================*/
+            /*存入数据库操作======================================*/
             mv.addObject("msg", "success");
         }
         mv.setViewName("save_result");

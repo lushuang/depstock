@@ -19,6 +19,8 @@ public interface RoleManager {
      */
     public List<Role> listAllRolesByPId(PageData pd) throws Exception;
 
+    List<Role> listAllRoles(PageData pd) throws Exception;
+
     /**
      * 通过id查找
      *

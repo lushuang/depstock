@@ -44,8 +44,16 @@
         <include refid="Field"></include>
         from
         <include refid="tableName"></include>
-        where
-        PARENT_ID = #{ROLE_ID}
+        where PARENT_ID = #{ROLE_ID}
+        ORDER BY ROLE_ID
+    </select>
+
+    <!-- 查看所有角色 -->
+    <select id="listAllRoles" resultMap="roleResultMap">
+        select
+        <include refid="Field"></include>
+        from
+        <include refid="tableName"></include>
         ORDER BY ROLE_ID
     </select>
 
