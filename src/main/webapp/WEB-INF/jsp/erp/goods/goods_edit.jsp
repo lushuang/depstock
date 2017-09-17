@@ -37,7 +37,7 @@
 								<td colspan="10"><input type="text" name="TITLE" id="TITLE" value="${pd.TITLE}" maxlength="255" placeholder="这里输入商品名称" title="商品名称" style="width:98%;"/></td>
 							</tr>
 							<tr>
-								<td style="width:75px;text-align: right;padding-top: 13px;">商品编码:</td>
+								<td style="width:75px;text-align: right;padding-top: 13px;">商品编号:</td>
 								<td><input type="text" name="BIANMA" id="BIANMA" value="${pd.BIANMA}" maxlength="30" placeholder="这里输入商品编码" title="商品编码" style="width:98%;"/></td>
 								<td style="width:75px;text-align: right;padding-top: 13px;">商品品牌:</td>
 								<td>
@@ -52,11 +52,9 @@
                             <tr>
                                 <td style="width:75px;text-align: right;padding-top: 13px;">商品颜色:</td>
                                 <td>
-                                    <input type="text" name="goodsColor" id="goodsColorId" value="${pd.goodsColor}" maxlength="30" placeholder="这里输入商品颜色" title="商品颜色" style="width:98%;"/>
-                                </td>
-                                <td style="width:75px;text-align: right;padding-top: 13px;">商品尺寸:</td>
-                                <td>
-                                    <input type="text" name="goodsSize" id="goodsSizeId" value="${pd.goodsSize}" maxlength="30" placeholder="这里输入商品尺寸" title="商品尺寸" style="width:98%;"/>
+                                    <input type="text" name="GOODS_COLOR" id="GOOLS_COLOR_ID" value="${pd.GOODS_COLOR}" maxlength="30" placeholder="这里输入商品颜色" title="商品颜色" style="width:98%;"/> </td>
+                                <td style="width:75px;text-align: right;padding-top: 13px;">商品尺寸:</td> <td>
+                                    <input type="text" name="GOODS_SIZE" id="GOOLS_SIZE_ID" value="${pd.GOODS_SIZE}" maxlength="30" placeholder="这里输入商品尺寸" title="商品尺寸" style="width:98%;"/>
                                 </td>
                             </tr>
 							<tr>

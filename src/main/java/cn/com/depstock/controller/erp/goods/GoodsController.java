@@ -72,7 +72,6 @@ public class GoodsController extends BaseController {
     /**
      * 删除
      *
-     * @param out
      * @throws Exception
      */
     @RequestMapping(value = "/delete")
