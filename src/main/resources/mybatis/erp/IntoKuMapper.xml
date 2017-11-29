@@ -17,7 +17,8 @@
         BZ,
         USERNAME,
         INTOKU_ID,
-        GOODS_NAME
+        GOODS_NAME,
+        INTOKU_NO
     </sql>
 
     <!-- 字段值 -->
@@ -30,7 +31,8 @@
         #{BZ},
         #{USERNAME},
         #{INTOKU_ID},
-        #{GOODS_NAME}
+        #{GOODS_NAME},
+        #{INTOKU_NO}
     </sql>
 
     <!-- 新增-->
@@ -80,6 +82,7 @@
     <!-- 列表 -->
     <select id="datalistPage" parameterType="page" resultType="pd">
         select
+        a.INTOKU_NO,
         a.GOODS_ID,
         a.GOODS_NAME,
         a.INCOUNT,

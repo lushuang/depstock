@@ -56,6 +56,7 @@
                                 <thead>
                                 <tr>
                                     <th class="center" style="width:50px;">序号</th>
+                                    <th class="center">入库编号</th>
                                     <th class="center">商品名称</th>
                                     <th class="center">数量</th>
                                     <th class="center">单价</th>
@@ -73,6 +74,7 @@
                                             <c:forEach items="${varList}" var="var" varStatus="vs">
                                                 <tr>
                                                     <td class='center' style="width: 30px;">${vs.index+1}</td>
+                                                    <td class='center'>${var.INTOKU_NO}</td>
                                                     <td class='center'>${var.GOODS_NAME}</td>
                                                     <td class='center'>${var.INCOUNT}</td>
                                                     <td class='center'>${var.PRICE}</td>

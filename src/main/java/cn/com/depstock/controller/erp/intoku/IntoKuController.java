@@ -51,6 +51,7 @@ public class IntoKuController extends BaseController {
         pd.put("INTIME", Tools.date2Str(new Date()));    //入库时间
         pd.put("USERNAME", Jurisdiction.getUsername());    //用户名
         pd.put("GOODS_NAME", goodsService.findById(pd).getString("TITLE"));    //商品名称
+        pd.put("INTOKU_NO", System.currentTimeMillis());    //商品名称
         intokuService.save(pd);
         goodsService.editZCOUNT(pd); //修改库存
         mv.addObject("msg", "success");
