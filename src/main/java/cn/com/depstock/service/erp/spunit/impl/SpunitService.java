@@ -80,6 +80,11 @@ public class SpunitService implements SpunitManager {
         return (PageData) dao.findForObject("SpunitMapper.findById", pd);
     }
 
+    @Override
+    public PageData findByName(String name) throws Exception {
+        return (PageData) dao.findForObject("SpunitMapper.findByName", name);
+    }
+
     /**
      * 批量删除
      *

@@ -80,6 +80,11 @@ public class SpbrandService implements SpbrandManager {
         return (PageData) dao.findForObject("SpbrandMapper.findById", pd);
     }
 
+    @Override
+    public PageData findByName(String name) throws Exception {
+        return (PageData) dao.findForObject("SpbrandMapper.findByName", name);
+    }
+
     /**
      * 批量删除
      *

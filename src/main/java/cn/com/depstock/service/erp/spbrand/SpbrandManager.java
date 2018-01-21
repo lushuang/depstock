@@ -58,6 +58,8 @@ public interface SpbrandManager {
      */
     public PageData findById(PageData pd) throws Exception;
 
+    public PageData findByName(String name) throws Exception;
+
     /**
      * 批量删除
      *

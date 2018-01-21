@@ -80,6 +80,11 @@ public class SptypeService implements SptypeManager {
         return (PageData) dao.findForObject("SptypeMapper.findById", pd);
     }
 
+    @Override
+    public PageData findByName(String name) throws Exception {
+        return (PageData) dao.findForObject("SptypeMapper.findByName", name);
+    }
+
     /**
      * 批量删除
      *

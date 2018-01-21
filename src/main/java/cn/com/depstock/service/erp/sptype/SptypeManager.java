@@ -59,6 +59,14 @@ public interface SptypeManager {
     public PageData findById(PageData pd) throws Exception;
 
     /**
+     * 通过name获取数据
+     *
+     * @param name
+     * @throws Exception
+     */
+    public PageData findByName(String name) throws Exception;
+
+    /**
      * 批量删除
      *
      * @param ArrayDATA_IDS

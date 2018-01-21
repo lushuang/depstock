@@ -7,18 +7,20 @@ import cn.com.depstock.service.erp.spbrand.SpbrandManager;
 import cn.com.depstock.service.erp.sptype.SptypeManager;
 import cn.com.depstock.service.erp.spunit.SpunitManager;
 import cn.com.depstock.service.information.pictures.PicturesManager;
-import cn.com.depstock.util.AppUtil;
-import cn.com.depstock.util.Jurisdiction;
-import cn.com.depstock.util.PageData;
+import cn.com.depstock.service.system.fhlog.FHlogManager;
+import cn.com.depstock.util.*;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -44,6 +46,75 @@ public class GoodsController extends BaseController {
     private SptypeManager sptypeService;
     @Resource(name = "spunitService")
     private SpunitManager spunitService;
+    @Resource(name = "fhlogService")
+    private FHlogManager FHLOG;
+
+    /**
+     * 打开上传EXCEL页面
+     *
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping(value = "/goUploadExcel")
+    public ModelAndView goUploadExcel() throws Exception {
+        ModelAndView mv = this.getModelAndView();
+        mv.setViewName("erp/goods/uploadexcel");
+        return mv;
+    }
+
+    /**
+     * 下载模版
+     *
+     * @param response
+     * @throws Exception
+     */
+    @RequestMapping(value = "/downExcel")
+    public void downExcel(HttpServletResponse response) throws Exception {
+        FileDownload.fileDownload(response, PathUtil.getClasspath() + Const.FILEPATHFILE + "Goods.xls", "商品列表.xls");
+    }
+
+    /**
+     * 从EXCEL导入到数据库
+     *
+     * @param file
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping(value = "/readExcel")
+    public ModelAndView readExcel(
+            @RequestParam(value = "excel", required = false) MultipartFile file
+    ) throws Exception {
+        FHLOG.save(Jurisdiction.getUsername(), "从EXCEL导入到数据库");
+        ModelAndView mv = this.getModelAndView();
+        PageData pd = new PageData();
+        if (!Jurisdiction.buttonJurisdiction(menuUrl, "add")) {
+            return null;
+        }
+
+        if (null != file && !file.isEmpty()) {
+            String filePath = PathUtil.getClasspath() + Const.FILEPATHFILE;
+            String fileName = FileUpload.fileUp(file, filePath, "goodsexcel");
+            List<PageData> listPd = (List) ObjectExcelRead.readExcel(filePath, fileName, 2, 0, 0);
+            for (int i = 0; i < listPd.size(); i++) {
+                pd.put("GOODS_ID", this.get32UUID());
+                pd.put("ZCOUNT", 0);
+                pd.put("USERNAME", Jurisdiction.getUsername());
+                pd.put("TITLE", listPd.get(i).getString("var0"));
+                pd.put("BIANMA", listPd.get(i).getString("var1"));
+                pd.put("SPBRAND_ID", spbrandService.findByName(listPd.get(i).getString("var2")).getString("SPBRAND_ID"));
+                pd.put("GOODS_COLOR", listPd.get(i).getString("var3"));
+                pd.put("GOODS_SIZE", listPd.get(i).getString("var4"));
+                pd.put("SPTYPE_ID", sptypeService.findByName(listPd.get(i).getString("var5")).getString("SPTYPE_ID"));
+                pd.put("SPUNIT_ID", spunitService.findByName(listPd.get(i).getString("var6")).getString("SPUNIT_ID"));
+                pd.put("DESCRIPTION", listPd.get(i).getString("var7"));
+                pd.put("SHORTDESC", listPd.get(i).getString("var8"));
+                goodsService.save(pd);
+            }
+            mv.addObject("msg", "success");
+        }
+        mv.setViewName("save_result");
+        return mv;
+    }
 
     /**
      * 保存
